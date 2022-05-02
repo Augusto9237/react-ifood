@@ -54,6 +54,24 @@
   border-radius: 8px;
 }
 
+.orderItem-content textarea {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 5px;
+  width: 100%;
+  height: 40px;
+  margin-right: 16px;
+  /* Base / Form BG */
+  color: aliceblue;
+  background: #2d303e;
+  /* Base / Dark Line */
+
+  border: 1px solid #393c49;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
 .orderItem-contentbtnDelete {
   display: flex;
   flex-direction: row;
@@ -73,20 +91,8 @@
   border-radius: 8px;
 }
 
-.orderItem-content textarea {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 5px;
-  width: 100%;
-  height: 40px;
-  margin-right: 16px;
-  /* Base / Form BG */
+.orderItem-contentbtnDelete:hover {
+  cursor: pointer;
+  background-color: #f83c1a;
   color: aliceblue;
-  background: #2d303e;
-  /* Base / Dark Line */
-
-  border: 1px solid #393c49;
-  box-sizing: border-box;
-  border-radius: 8px;
 }
