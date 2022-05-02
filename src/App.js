@@ -124,6 +124,20 @@ function About() {
           <h1>Pedido</h1>
           <div className="menu-content"></div>
         </div>
+        <div className="Items-order_Menu">
+          <div>
+            <span>Imagem</span>
+          </div>
+          <div>
+            <span>Nome Produto</span>
+          </div>
+          <div>
+            <span>Preço</span>
+          </div>
+          <div>
+            <span>Subtotal</span>
+          </div>
+        </div>
         <CardOrder>
           <OrderItem />
         </CardOrder>

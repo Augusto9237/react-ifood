@@ -1,16 +1,14 @@
 .home-container {
-  background-color: aquamarine;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
+  align-items: center;
   color: #ffffff;
   position: absolute;
   width: 100%;
   max-width: 720px;
   margin: auto 0px;
   height: 100%;
-  left: 10%;
+  left: 11%;
 }
 .title-container {
   display: flex;
@@ -62,5 +60,11 @@
 }
 
 .attendants-container {
+  width: 100%;
+}
+
+.Items-order_Menu {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
 }
