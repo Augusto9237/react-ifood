@@ -3,6 +3,7 @@
   width: 100%;
   min-height: 400px;
   border-radius: 8px;
+  padding: 0px 16px;
 }
 
 .title-container_order {
