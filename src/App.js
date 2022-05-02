@@ -128,10 +128,10 @@ function About() {
           <div>
             <span>Produto</span>
           </div>
-          <div>
+          <div style={{ width: '10%', background: 'red', textAlign: 'center' }}>
             <span>Preço</span>
           </div>
-          <div>
+          <div style={{ width: '10%' }}>
             <span>Quantidade</span>
           </div>
           <div>

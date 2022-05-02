@@ -65,6 +65,7 @@
 
 .Items-order_Menu {
   display: flex;
+
   justify-content: space-between;
   width: 100%;
   margin: 16px 0px;
