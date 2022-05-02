@@ -4,6 +4,7 @@
   min-height: 400px;
   border-radius: 8px;
   padding: 0px 16px;
+  overflow: hidden;
 }
 
 .title-container_order {

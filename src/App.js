@@ -30,7 +30,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
+          <Route path="Pedido" element={<About />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="attendants" element={<Attendants />} />
           <Route path="*" element={<NoMatch />} />
@@ -51,7 +51,7 @@ function Layout() {
             </div>
           </Link>
 
-          <Link to="/about">
+          <Link to="/Pedido">
             <div className="containerButtons">
               <ImCart />
             </div>
