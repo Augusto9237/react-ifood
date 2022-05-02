@@ -126,13 +126,13 @@ function About() {
         </div>
         <div className="Items-order_Menu">
           <div>
-            <span>Imagem</span>
-          </div>
-          <div>
-            <span>Nome Produto</span>
+            <span>Produto</span>
           </div>
           <div>
             <span>Preço</span>
+          </div>
+          <div>
+            <span>Quantidade</span>
           </div>
           <div>
             <span>Subtotal</span>
