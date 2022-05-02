@@ -118,7 +118,15 @@ function Home() {
 function About() {
   return (
     <div>
-      <ContainerHome></ContainerHome>
+      <ContainerHome>
+        <div className="title-container">
+          <h1>Pedido</h1>
+          <div className="menu-content">
+         
+          </div>
+        </div>
+        <CardOrder></CardOrder>
+      </ContainerHome>
       <Columm>
         <CardExtra />
 
