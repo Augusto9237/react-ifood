@@ -22,6 +22,7 @@ import FormAtt from './components/FormAttendants/FormAtt';
 import Button from './components/Button/Button';
 import CardExtra from './components/CardExtra/CardExtra';
 import CardOrder from './components/CardOrder/CardOrder';
+import OrderItem from './components/OrderItem/OrderItem';
 
 export default function App() {
   return (
@@ -121,11 +122,11 @@ function About() {
       <ContainerHome>
         <div className="title-container">
           <h1>Pedido</h1>
-          <div className="menu-content">
-         
-          </div>
+          <div className="menu-content"></div>
         </div>
-        <CardOrder></CardOrder>
+        <CardOrder>
+          <OrderItem />
+        </CardOrder>
       </ContainerHome>
       <Columm>
         <CardExtra />
