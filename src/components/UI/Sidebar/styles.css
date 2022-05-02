@@ -1,0 +1,99 @@
+.sidebar-container {
+  background-color: #1f1d2b;
+  position: fixed;
+  width: 80px;
+  height: 100vh;
+  left: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 0px;
+}
+.header {
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.sidebar-container a {
+  text-decoration: none;
+  font-size: 22px;
+}
+
+/* From cssbuttons.io by @alexroumi */
+.containerButtons {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 15px 20px;
+  border: unset;
+  color: #e8e8e8;
+  z-index: 1;
+  position: relative;
+  font-weight: 1000;
+  font-size: 17px;
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.containerButtons::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 12px 0px 0px 12px;
+  background: #252836;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.containerButtons:hover {
+  color: rgb(0, 206, 221);
+}
+
+.containerButtons:hover::before {
+  width: 90%;
+}
+
+.containerButtonsExit {
+  position: absolute;
+  right: 0;
+  bottom: 8%;
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  padding: 15px 20px;
+  border: unset;
+  color: rgb(255, 60, 60);
+  z-index: 1;
+
+  font-weight: 1000;
+  font-size: 17px;
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.containerButtonsExit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 12px 0px 0px 12px;
+  background-color: rgb(255, 60, 60);
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.containerButtonsExit:hover {
+  color: #e8e8e8;
+}
+
+.containerButtonsExit:hover::before {
+  width: 90%;
+}

@@ -1,0 +1,43 @@
+.completed {
+  margin: 0 auto;
+  width: 90px;
+  align-items: center;
+  text-align: center;
+  padding: 4px;
+  color: aquamarine;
+  background: rgba(107, 226, 190, 0.24);
+  border-radius: 30px;
+}
+
+.preparing {
+  margin: 0 auto;
+  width: 90px;
+  align-items: center;
+  text-align: center;
+  padding: 4px;
+  color: #9290fe;
+  background: rgba(146, 144, 254, 0.2);
+  border-radius: 30px;
+}
+
+.preparing {
+  margin: 0 auto;
+  width: 90px;
+  align-items: center;
+  text-align: center;
+  padding: 4px;
+  color: #9290fe;
+  background: rgba(146, 144, 254, 0.2);
+  border-radius: 30px;
+}
+
+.pending {
+  margin: 0 auto;
+  width: 90px;
+  align-items: center;
+  text-align: center;
+  padding: 4px;
+  color: #ffb572;
+  background: rgba(255, 181, 114, 0.2);
+  border-radius: 30px;
+}

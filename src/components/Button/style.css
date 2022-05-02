@@ -1,0 +1,17 @@
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  padding: 10px;
+  background-color: rgb(0, 206, 221);
+  /* Dropshadow */
+
+  border-radius: 8px;
+}
+
+.button-container:hover {
+  cursor: pointer;
+  box-shadow: 0px 2px 10px rgba(0, 173, 185, 0.685);
+}
