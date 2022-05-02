@@ -1,20 +1,92 @@
 .orderItem-container {
-  background-color: blueviolet;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-
-  position: static;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 106px;
-  left: 0px;
-  top: 0px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  border-bottom: 1px solid #393c49;
+}
 
+.orderItem-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
   /* Inside auto layout */
 
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin: 24px 0px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0px;
+}
+.orderItem-imageProduct {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.orderItem-imageProduct img {
+  width: 100%;
+  height: 100%;
+}
+
+.orderItem-content input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 100%;
+
+  /* Base / Form BG */
+  color: aliceblue;
+  background: #2d303e;
+  /* Base / Dark Line */
+
+  border: 1px solid #393c49;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.orderItem-contentbtnDelete {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background-color: transparent;
+  color: #f83c1a;
+
+  width: 40px;
+  height: 40px;
+
+  /* Primary Color */
+
+  border: 1px solid #f83c1a;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.orderItem-content textarea {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 5px;
+  width: 100%;
+  height: 40px;
+  margin-right: 16px;
+  /* Base / Form BG */
+  color: aliceblue;
+  background: #2d303e;
+  /* Base / Dark Line */
+
+  border: 1px solid #393c49;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
