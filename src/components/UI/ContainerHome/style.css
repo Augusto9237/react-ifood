@@ -7,8 +7,9 @@
   width: 100%;
   max-width: 720px;
   margin: auto 0px;
-  height: 100%;
+  height: 100vh;
   left: 11%;
+  overflow: hidden;
 }
 .title-container {
   display: flex;
