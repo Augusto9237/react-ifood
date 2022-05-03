@@ -88,7 +88,11 @@ function Home() {
   return (
     <div>
       <ContainerHome>
-        <Header title="Home"></Header>
+        <Header title="Home">
+          <div className="menu">Entradas</div>
+          <div className="menu">Bebidas</div>
+          <div className="menu">Pratos</div>
+        </Header>
         <div className="body-list">
           <Card>
             <div className="productImg">
@@ -115,14 +119,11 @@ function About() {
   return (
     <div>
       <ContainerHome>
-        <div className="title-container">
-          <h1>Pedido</h1>
-          <div className="menu-content">
-            <span>Id Pedido: </span>
-            <span>Cliente: </span>
-            <span>Mesa: </span>
-          </div>
-        </div>
+        <Header title="Pedido">
+          <span>Id Pedido: </span>
+          <span>Cliente: </span>
+          <span>Mesa: </span>
+        </Header>
         <div className="Items-order_Menu">
           <div style={{ width: '40%', textAlign: 'center' }}>
             <span>Produto</span>
