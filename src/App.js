@@ -53,6 +53,7 @@ function Layout() {
 
           <Link to="/Pedido">
             <div className="containerButtons">
+              <div className="containerButtons-cart">0</div>
               <ImCart />
             </div>
           </Link>
@@ -122,13 +123,17 @@ function About() {
       <ContainerHome>
         <div className="title-container">
           <h1>Pedido</h1>
-          <div className="menu-content"></div>
+          <div className="menu-content">
+            <span>Id Pedido: </span>
+            <span>Cliente: </span>
+            <span>Mesa: </span>
+          </div>
         </div>
         <div className="Items-order_Menu">
-          <div>
+          <div style={{ width: '40%', textAlign: 'center' }}>
             <span>Produto</span>
           </div>
-          <div style={{ width: '10%', background: 'red', textAlign: 'center' }}>
+          <div>
             <span>Preço</span>
           </div>
           <div style={{ width: '10%' }}>

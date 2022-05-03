@@ -57,6 +57,29 @@
   width: 90%;
 }
 
+.containerButtons-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  font-size: 12px;
+
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  right: 18px;
+  top: 0px;
+
+  /* Primary Color */
+
+  background: rgb(255, 60, 60);
+  /* Shadow/E3 */
+
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+}
+
 .containerButtonsExit {
   position: absolute;
   right: 0;
