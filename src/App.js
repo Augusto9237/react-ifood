@@ -155,9 +155,7 @@ function Dashboard() {
   return (
     <div>
       <ContainerHome>
-        <div className="title-container">
-          <h1>Dashboard</h1>
-        </div>
+        <Header title="Dashboard"></Header>
         <div className="flat-list">
           <Card height={{ height: 143 }}>
             <div className="headerCard">
@@ -197,9 +195,7 @@ function Attendants() {
   return (
     <>
       <ContainerHome>
-        <div className="title-container">
-          <h1>Atendentes</h1>
-        </div>
+        <Header title="Atendentes"></Header>
 
         <div className="attendants-container">
           <Table />

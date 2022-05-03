@@ -47,7 +47,7 @@
 .flat-list {
   width: 100%;
   display: flex;
-  margin: 24px 0;
+  margin-bottom: 24px;
   justify-content: space-between;
 }
 
@@ -65,8 +65,7 @@
 
 .Items-order_Menu {
   display: flex;
-
   justify-content: space-between;
   width: 100%;
-  margin: 16px 0px;
+  margin-bottom: 16px;
 }
