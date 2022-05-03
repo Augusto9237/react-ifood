@@ -12,6 +12,12 @@
   border-bottom: 1px solid;
 }
 
+.date {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 8px;
+}
+
 .header-menu {
   display: flex;
   width: 100%;
