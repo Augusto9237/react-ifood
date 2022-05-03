@@ -13,6 +13,7 @@ import {
 
 import './style.css';
 import Sidebar from './components/UI/Sidebar/Sidebar';
+import Header from './components/UI/Header/Header';
 import ContainerHome from './components/UI/ContainerHome/ContainerHome';
 import ColumnOrders from './components/UI/ColumnOrders/ColumnOrders';
 import Columm from './components/UI/Columm/Columm';
@@ -87,14 +88,7 @@ function Home() {
   return (
     <div>
       <ContainerHome>
-        <div className="title-container">
-          <h1>Home</h1>
-          <div className="menu-content">
-            <div className="menu">Entradas</div>
-            <div className="menu">Bebidas</div>
-            <div className="menu">Pratos</div>
-          </div>
-        </div>
+        <Header title="Home"></Header>
         <div className="body-list">
           <Card>
             <div className="productImg">
