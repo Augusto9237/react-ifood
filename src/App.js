@@ -22,6 +22,7 @@ import Table from './components/Table/Table';
 import FormAtt from './components/FormAttendants/FormAtt';
 import Button from './components/Button/Button';
 import CardExtra from './components/CardExtra/CardExtra';
+import CardLogin from './components/CardLogin/CardLogin';
 import CardOrder from './components/CardOrder/CardOrder';
 import OrderItem from './components/OrderItem/OrderItem';
 
@@ -31,11 +32,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="Pedido" element={<About />} />
+          <Route path="Pedido" element={<Order />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="attendants" element={<Attendants />} />
-          <Route path="*" element={<NoMatch />} />
         </Route>
+        <Route path="Login" element={<Login />} />
       </Routes>
     </div>
   );
@@ -71,7 +72,7 @@ function Layout() {
             </div>
           </Link>
 
-          <Link to="/nothing-here">
+          <Link to="login">
             <div className="containerButtonsExit">
               <ImExit />
             </div>
@@ -115,7 +116,7 @@ function Home() {
   );
 }
 
-function About() {
+function Order() {
   return (
     <div>
       <ContainerHome>
@@ -208,10 +209,12 @@ function Attendants() {
   );
 }
 
-function NoMatch() {
+function Login() {
   return (
     <div>
-      <h2>EXIT</h2>
+      <CardLogin>
+        <Button>Entrar</Button>
+      </CardLogin>
     </div>
   );
 }
