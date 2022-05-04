@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, Outlet, Link } from 'react-router-dom';
+import { Routes, Route, Outlet, Link, useNavigate } from 'react-router-dom';
 
 import {
   ImHome,
@@ -210,10 +210,11 @@ function Attendants() {
 }
 
 function Login() {
+  const navigate = useNavigate();
   return (
     <div>
       <CardLogin>
-        <Button>Entrar</Button>
+        <Button onclick={navigate('/')}>Entrar</Button>
       </CardLogin>
     </div>
   );
