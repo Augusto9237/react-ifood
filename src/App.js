@@ -214,7 +214,9 @@ function Login() {
   return (
     <div>
       <CardLogin>
-        <Button onclick={navigate('/')}>Entrar</Button>
+        <Link to="/">
+          <Button>Entrar</Button>
+        </Link>
       </CardLogin>
     </div>
   );

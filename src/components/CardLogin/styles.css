@@ -30,6 +30,11 @@
   margin-bottom: 5px;
 }
 
+.cardLogin-content a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .cardLogin-container input {
   width: 100%;
   height: 40px;
