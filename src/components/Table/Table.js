@@ -9,7 +9,9 @@ export default function Table({ children }) {
         <div class="divTableRowHead">
           <div class="divTableHead">Cliente</div>
           <div class="divTableHead">Menu</div>
-          <div class="divTableHead">Total a Pagar</div>
+          <div class="divTableHead" id="total">
+            Total a Pagar
+          </div>
           <div class="divTableHead">Status</div>
         </div>
       </div>

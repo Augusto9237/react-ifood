@@ -37,9 +37,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.menu {
-  height: 25px;
-}
+
 .menu:hover {
   color: rgb(0, 238, 255);
   border-bottom: 3px solid rgb(0, 238, 255);

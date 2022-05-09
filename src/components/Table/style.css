@@ -52,3 +52,9 @@ div.body {
   background: #364153;
   border-radius: 10px;
 }
+
+#total {
+  text-align: center;
+
+  margin-left: 20%;
+}

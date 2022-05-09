@@ -8,7 +8,7 @@ export default function CardLogin({ children }) {
       <div className="cardLogin-content">
         <h1>Login</h1>
         <label>Email</label>
-        <input />
+        <input required />
         <label>Senha</label>
         <input />
         {children}
