@@ -1,0 +1,28 @@
+.tabUser-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tabUser-header div {
+  text-align: center;
+}
+
+.tabeUser-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#id {
+  width: 10%;
+  overflow: hidden;
+}
+
+.tabeUser-row div {
+  text-align: center;
+
+  width: 20%;
+}

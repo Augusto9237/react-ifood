@@ -1,8 +1,8 @@
 import FormAtt from "../../components/FormAttendants/FormAtt";
-import Table from "../../components/Table/Table";
 import Columm from "../../components/UI/Columm/Columm";
 import ContainerHome from "../../components/UI/ContainerHome/ContainerHome";
 import Header from "../../components/UI/Header/Header";
+import "./styles.css";
 
 const Attendants = ({
   users,
@@ -19,16 +19,24 @@ const Attendants = ({
         <Header title="Atendentes"></Header>
 
         <div className="attendants-container">
+          <div className="tabUser-header">
+            <div>ID</div>
+            <div>NOME</div>
+            <div>E-MAIL</div>
+            <div>TIPO</div>
+            <div></div>
+          </div>
           {users.map((user) => {
             return (
-              <div key={user.id}>
-                <li>{user.name}</li>
-                <li>{user.email}</li>
+              <div key={user.id} className="tabeUser-row">
+                <div id="id">{user.id}</div>
+                <div>{user.name}</div>
+                <div>{user.email}</div>
+                <div>Padrão</div>
                 <button onClick={() => deleteUser(user.id)}>Excluir</button>
               </div>
             );
           })}
-          <Table />
         </div>
       </ContainerHome>
       <Columm>
