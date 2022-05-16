@@ -1,5 +1,15 @@
-import React from 'react';
-import { Routes, Route, Outlet, Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Routes, Route, Outlet, Link, useNavigate } from "react-router-dom";
+
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  doc,
+  addDoc,
+  deleteDoc
+} from "firebase/firestore";
 
 import {
   ImHome,
@@ -8,25 +18,65 @@ import {
   ImExit,
   ImCoinDollar,
   ImArrowUp2,
-  ImUserPlus,
-} from 'react-icons/im';
+  ImUserPlus
+} from "react-icons/im";
 
-import './style.css';
-import Sidebar from './components/UI/Sidebar/Sidebar';
-import Header from './components/UI/Header/Header';
-import ContainerHome from './components/UI/ContainerHome/ContainerHome';
-import ColumnOrders from './components/UI/ColumnOrders/ColumnOrders';
-import Columm from './components/UI/Columm/Columm';
-import Card from './components/Card/Card';
-import Table from './components/Table/Table';
-import FormAtt from './components/FormAttendants/FormAtt';
-import Button from './components/Button/Button';
-import CardExtra from './components/CardExtra/CardExtra';
-import CardLogin from './components/CardLogin/CardLogin';
-import CardOrder from './components/CardOrder/CardOrder';
-import OrderItem from './components/OrderItem/OrderItem';
+import "./style.css";
+import Sidebar from "./components/UI/Sidebar/Sidebar";
+import Header from "./components/UI/Header/Header";
+import ContainerHome from "./components/UI/ContainerHome/ContainerHome";
+import ColumnOrders from "./components/UI/ColumnOrders/ColumnOrders";
+import Columm from "./components/UI/Columm/Columm";
+import Card from "./components/Card/Card";
+import Table from "./components/Table/Table";
+import FormAtt from "./components/FormAttendants/FormAtt";
+import Button from "./components/Button/Button";
+import CardExtra from "./components/CardExtra/CardExtra";
+import CardLogin from "./components/CardLogin/CardLogin";
+import CardOrder from "./components/CardOrder/CardOrder";
+import OrderItem from "./components/OrderItem/OrderItem";
+import Attendants from "./Pages/Attendants/AttendantsPage";
+
+const firebaseApp = initializeApp({
+  apiKey: "AIzaSyArlrMtCj8XXKONRtG6_crV5467eumsbNA",
+  authDomain: "reactfirebase-4fc5c.firebaseapp.com",
+  projectId: "reactfirebase-4fc5c",
+  storageBucket: "reactfirebase-4fc5c.appspot.com",
+  messagingSenderId: "579919442488",
+  appId: "1:579919442488:web:196ca21250d5b1e3ddeccd",
+  measurementId: "G-MPDWX9611N"
+});
 
 export default function App() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [users, setUsers] = useState([]);
+
+  const db = getFirestore();
+  const useCollectionRef = collection(db, "users");
+
+  async function createUser() {
+    const user = await addDoc(useCollectionRef, {
+      name,
+      email
+    });
+
+    console.log(user);
+  }
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(useCollectionRef);
+      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getUsers();
+  }, []);
+
+  async function deleteUser(id) {
+    const userDoc = doc(db, "users", id);
+    await deleteDoc(userDoc);
+  }
+
   return (
     <div>
       <Routes>
@@ -34,7 +84,20 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="Pedido" element={<Order />} />
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="attendants" element={<Attendants />} />
+          <Route
+            path="attendants"
+            element={
+              <Attendants
+                name={name}
+                email={email}
+                users={users}
+                setName={setName}
+                setEmail={setEmail}
+                deleteUser={deleteUser}
+                createUser={createUser}
+              />
+            }
+          />
         </Route>
         <Route path="Login" element={<Login />} />
       </Routes>
@@ -126,13 +189,13 @@ function Order() {
           <span>Mesa: </span>
         </Header>
         <div className="Items-order_Menu">
-          <div style={{ width: '40%', textAlign: 'center' }}>
+          <div style={{ width: "40%", textAlign: "center" }}>
             <span>Produto</span>
           </div>
           <div>
             <span>Preço</span>
           </div>
-          <div style={{ width: '10%' }}>
+          <div style={{ width: "10%" }}>
             <span>Quantidade</span>
           </div>
           <div>
@@ -189,23 +252,6 @@ function Dashboard() {
         <CardExtra />
       </Columm>
     </div>
-  );
-}
-
-function Attendants() {
-  return (
-    <>
-      <ContainerHome>
-        <Header title="Atendentes"></Header>
-
-        <div className="attendants-container">
-          <Table />
-        </div>
-      </ContainerHome>
-      <Columm>
-        <FormAtt />
-      </Columm>
-    </>
   );
 }
 
