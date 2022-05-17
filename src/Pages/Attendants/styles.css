@@ -5,8 +5,15 @@
   justify-content: space-between;
 }
 
+#idHeader {
+  width: 10%;
+  overflow: hidden;
+  margin-right: 5%;
+}
+
 .tabUser-header div {
   text-align: center;
+  width: 20%;
 }
 
 .tabeUser-row {
@@ -14,6 +21,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 #id {
@@ -23,6 +31,5 @@
 
 .tabeUser-row div {
   text-align: center;
-
-  width: 20%;
+  width: 25%;
 }

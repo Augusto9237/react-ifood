@@ -6,9 +6,11 @@
   margin-top: 5px;
   padding: 10px;
   background-color: rgb(0, 206, 221);
+  color: #ffffff;
   /* Dropshadow */
 
   border-radius: 8px;
+  border: none;
 }
 
 .button-container:hover {

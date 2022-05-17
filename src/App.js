@@ -29,7 +29,6 @@ import ColumnOrders from "./components/UI/ColumnOrders/ColumnOrders";
 import Columm from "./components/UI/Columm/Columm";
 import Card from "./components/Card/Card";
 import Table from "./components/Table/Table";
-import FormAtt from "./components/FormAttendants/FormAtt";
 import Button from "./components/Button/Button";
 import CardExtra from "./components/CardExtra/CardExtra";
 import CardLogin from "./components/CardLogin/CardLogin";
@@ -51,17 +50,17 @@ export default function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [users, setUsers] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const db = getFirestore();
   const useCollectionRef = collection(db, "users");
+  const productCollectionRef = collection(db, "products");
 
   async function createUser() {
     const user = await addDoc(useCollectionRef, {
       name,
       email
     });
-
-    console.log(user);
   }
 
   useEffect(() => {
@@ -70,6 +69,14 @@ export default function App() {
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getUsers();
+  }, []);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const data = await getDocs(productCollectionRef);
+      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getProducts();
   }, []);
 
   async function deleteUser(id) {
@@ -81,7 +88,7 @@ export default function App() {
     <div>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Home products={products} />} />
           <Route path="Pedido" element={<Order />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route
@@ -148,7 +155,7 @@ function Layout() {
   );
 }
 
-function Home() {
+function Home({ products }) {
   return (
     <div>
       <ContainerHome>
@@ -158,18 +165,19 @@ function Home() {
           <div className="menu">Pratos</div>
         </Header>
         <div className="body-list">
-          <Card>
-            <div className="productImg">
-              <img src="https://lh3.googleusercontent.com/p/AF1QipPPtbkULVpHYKXNjo3jl1oANyIFKAGGXtqMzwX9=w768-h768-n-o-v1" />
-            </div>
-            <h4>Balde de Cerveja heineken</h4>
-            <span>
-              06 Long Neck cerveja Heineken (garrafas 330ml cada)01 Balde de
-              alumínio
-            </span>
-            <h1>R$ 50,00</h1>
-            <Button>Adicionar ao Pedido</Button>
-          </Card>
+          {products.map((product) => {
+            return (
+              <Card key={product.id}>
+                <div className="productImg">
+                  <img src={product.image} />
+                </div>
+                <h4>{product.name}</h4>
+                <span>{product.description}</span>
+                <h1>R$ {product.price}</h1>
+                <Button>Adicionar ao Pedido</Button>
+              </Card>
+            );
+          })}
         </div>
       </ContainerHome>
       <Columm>

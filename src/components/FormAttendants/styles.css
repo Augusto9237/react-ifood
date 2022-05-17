@@ -70,7 +70,7 @@
   margin-top: 120%;
 }
 
-.form-group-buttons button {
+.buttonCancel {
   background-color: transparent;
   display: flex;
   flex-direction: row;

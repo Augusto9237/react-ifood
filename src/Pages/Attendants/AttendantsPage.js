@@ -20,11 +20,11 @@ const Attendants = ({
 
         <div className="attendants-container">
           <div className="tabUser-header">
-            <div>ID</div>
+            <div id="idHeader">ID</div>
             <div>NOME</div>
             <div>E-MAIL</div>
             <div>TIPO</div>
-            <div></div>
+            <div style={{ marginLeft: "2%", width: "10%" }}></div>
           </div>
           {users.map((user) => {
             return (

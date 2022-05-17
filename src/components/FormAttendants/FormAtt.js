@@ -36,7 +36,7 @@ export default function FormAtt({
         </div>
 
         <div className="form-group-buttons">
-          <button onClick={createUser}>SALVAR</button>
+          <Button onclick={createUser}>SALVAR</Button>
           <button className="buttonCancel">CANCELAR</button>
         </div>
       </div>

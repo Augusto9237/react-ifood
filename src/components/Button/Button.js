@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import './style.css';
+import "./style.css";
 
-export default function Button({ children }) {
-  return <div className="button-container">{children}</div>;
+export default function Button({ children, onclick }) {
+  return (
+    <button className="button-container" onClick={onclick}>
+      {children}
+    </button>
+  );
 }
