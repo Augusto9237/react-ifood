@@ -19,24 +19,32 @@ const Attendants = ({
         <Header title="Atendentes"></Header>
 
         <div className="attendants-container">
-          <div className="tabUser-header">
-            <div id="idHeader">ID</div>
-            <div>NOME</div>
-            <div>E-MAIL</div>
-            <div>TIPO</div>
-            <div style={{ marginLeft: "2%", width: "10%" }}></div>
-          </div>
-          {users.map((user) => {
-            return (
-              <div key={user.id} className="tabeUser-row">
-                <div id="id">{user.id}</div>
-                <div>{user.name}</div>
-                <div>{user.email}</div>
-                <div>Padrão</div>
-                <button onClick={() => deleteUser(user.id)}>Excluir</button>
-              </div>
-            );
-          })}
+          <table className="tableUser">
+            <thead className="tableUser-header">
+              <tr>
+                <td id="idClient">ID</td>
+                <td>NOME</td>
+                <td>E-MAIL</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => {
+                return (
+                  <tr key={user.id}>
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>
+                      <button onClick={() => deleteUser(user.id)}>
+                        Excluir
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </ContainerHome>
       <Columm>
