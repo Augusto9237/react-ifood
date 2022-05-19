@@ -51,10 +51,12 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
+  const [commands, setCommands] = useState([]);
 
   const db = getFirestore();
   const useCollectionRef = collection(db, "users");
   const productCollectionRef = collection(db, "products");
+  const commandCollectionRef = collection(db, "commandClient");
 
   async function createUser() {
     const user = await addDoc(useCollectionRef, {
@@ -79,6 +81,14 @@ export default function App() {
     getProducts();
   }, []);
 
+  useEffect(() => {
+    const getCommands = async () => {
+      const data = await getDocs(commandCollectionRef);
+      setCommands(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getCommands();
+  }, []);
+
   async function deleteUser(id) {
     const userDoc = doc(db, "users", id);
     await deleteDoc(userDoc);
@@ -89,7 +99,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home products={products} />} />
-          <Route path="Pedido" element={<Order />} />
+          <Route path="Pedido" element={<Order commands={commands} />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route
             path="attendants"
@@ -187,7 +197,7 @@ function Home({ products }) {
   );
 }
 
-function Order() {
+function Order({ commands }) {
   return (
     <div>
       <ContainerHome>
@@ -196,6 +206,7 @@ function Order() {
           <span>Cliente: </span>
           <span>Mesa: </span>
         </Header>
+
         <div className="Items-order_Menu">
           <div style={{ width: "40%", textAlign: "center" }}>
             <span>Produto</span>
@@ -211,7 +222,9 @@ function Order() {
           </div>
         </div>
         <CardOrder>
-          <OrderItem />
+          {commands.map((comand) => {
+            return <OrderItem commands={comand} key={comand.id} />;
+          })}
         </CardOrder>
       </ContainerHome>
       <Columm>
