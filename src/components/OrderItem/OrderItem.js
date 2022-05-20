@@ -11,7 +11,7 @@ export default function OrderItem({ children, commands }) {
         </div>
         <span>{commands.items.nameProduct}</span>
         <span>R$ {commands.items.price}</span>
-        <input type="Number" value={commands.items.quantity} />
+        <input type="Number" defaultValue={commands.items.quantity} />
         <span>R$ {commands.items.subtotal}</span>
       </div>
 
