@@ -7,7 +7,7 @@ export default function OrderItem({ children, commands }) {
     <div className="orderItem-container">
       <div className="orderItem-content">
         <div className="orderItem-imageProduct">
-          <img src="https://espetinhodesucesso.com.br/wp-content/uploads/2018/03/melhores-carnes-para-churrasco-1200x900.jpg" />
+          <img src={commands.items.ImageProduct} />
         </div>
         <span>{commands.items.nameProduct}</span>
         <span>R$ {commands.items.price}</span>
