@@ -8,7 +8,23 @@ import Header from "../../components/UI/Header/Header";
 import { FirebaseContext } from "../../Contexts/FirebaseContex";
 
 const Home = () => {
-  const { products } = useContext(FirebaseContext);
+  const { products, createCommand } = useContext(FirebaseContext);
+  const [productId, setProductId] = useState("");
+  const [productName, setProductName] = useState("");
+  const [productImage, setProductImage] = useState("");
+  const [productDescription, setProductDescription] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+
+  const handleSubmitCommand = (e) => {
+    e.preventDefault();
+    createCommand(
+      productId,
+      productName,
+      productPrice,
+      productDescription,
+      productImage
+    );
+  };
   return (
     <div>
       <ContainerHome>
@@ -20,14 +36,18 @@ const Home = () => {
         <div className="body-list">
           {products.map((product) => {
             return (
-              <Card key={product.id}>
+              <Card key={product.id} setProductId={product.id}>
                 <div className="productImg">
-                  <img src={product.image} />
+                  <img src={product.image} setProductImage={product.image} />
                 </div>
-                <h4>{product.name}</h4>
-                <span>{product.description}</span>
-                <h1>R$ {product.price}</h1>
-                <Button>Adicionar ao Pedido</Button>
+                <h4 setProductName={product.name}>{product.name}</h4>
+                <span setProductPrice={product.description}>
+                  {product.description}
+                </span>
+                <h1 setProductPrice={product.price}>R$ {product.price}</h1>
+                <Button onclick={handleSubmitCommand}>
+                  Adicionar ao Pedido
+                </Button>
               </Card>
             );
           })}

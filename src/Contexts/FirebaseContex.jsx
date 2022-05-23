@@ -42,18 +42,6 @@ export const FirebaseProvider = ({ children }) => {
   const productCollectionRef = collection(db, "products");
   const commandCollectionRef = collection(db, "commandClient");
 
-  async function createUser(name, email) {
-    const user = await addDoc(useCollectionRef, {
-      name,
-      email
-    });
-  }
-
-  async function deleteUser(id) {
-    const userDoc = doc(db, "users", id);
-    await deleteDoc(userDoc);
-  }
-
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(useCollectionRef);
@@ -78,9 +66,45 @@ export const FirebaseProvider = ({ children }) => {
     getCommands();
   }, []);
 
+  async function createUser(name, email) {
+    const user = await addDoc(useCollectionRef, {
+      name,
+      email
+    });
+  }
+
+  async function createCommand(
+    productId,
+    productName,
+    productPrice,
+    productDescription,
+    productImage
+  ) {
+    const command = await addDoc(commandCollectionRef, {
+      items: {
+        ImageProduct: productImage,
+        idProduct: productId,
+        nameProduct: productName,
+        price: productPrice
+      }
+    });
+  }
+
+  async function deleteUser(id) {
+    const userDoc = doc(db, "users", id);
+    await deleteDoc(userDoc);
+  }
+
   return (
     <FirebaseContext.Provider
-      value={{ users, products, commands, createUser, deleteUser }}
+      value={{
+        users,
+        products,
+        commands,
+        createUser,
+        deleteUser,
+        createCommand
+      }}
     >
       {children}
     </FirebaseContext.Provider>
