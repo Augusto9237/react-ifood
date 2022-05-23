@@ -35,6 +35,9 @@ import CardLogin from "./components/CardLogin/CardLogin";
 import CardOrder from "./components/CardOrder/CardOrder";
 import OrderItem from "./components/OrderItem/OrderItem";
 import Attendants from "./Pages/Attendants/AttendantsPage";
+import { FirebaseProvider } from "./Contexts/FirebaseContex";
+import Home from "./Pages/Home/Home";
+import Order from "./Pages/Order/Order";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyArlrMtCj8XXKONRtG6_crV5467eumsbNA",
@@ -47,77 +50,19 @@ const firebaseApp = initializeApp({
 });
 
 export default function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [users, setUsers] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [commands, setCommands] = useState([]);
-
-  const db = getFirestore();
-  const useCollectionRef = collection(db, "users");
-  const productCollectionRef = collection(db, "products");
-  const commandCollectionRef = collection(db, "commandClient");
-
-  async function createUser() {
-    const user = await addDoc(useCollectionRef, {
-      name,
-      email
-    });
-  }
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(useCollectionRef);
-      setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getUsers();
-  }, []);
-
-  useEffect(() => {
-    const getProducts = async () => {
-      const data = await getDocs(productCollectionRef);
-      setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getProducts();
-  }, []);
-
-  useEffect(() => {
-    const getCommands = async () => {
-      const data = await getDocs(commandCollectionRef);
-      setCommands(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
-    getCommands();
-  }, []);
-
-  async function deleteUser(id) {
-    const userDoc = doc(db, "users", id);
-    await deleteDoc(userDoc);
-  }
-
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home products={products} />} />
-          <Route path="Pedido" element={<Order commands={commands} />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route
-            path="attendants"
-            element={
-              <Attendants
-                name={name}
-                email={email}
-                users={users}
-                setName={setName}
-                setEmail={setEmail}
-                deleteUser={deleteUser}
-                createUser={createUser}
-              />
-            }
-          />
-        </Route>
-        <Route path="Login" element={<Login />} />
-      </Routes>
+      <FirebaseProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="Pedido" element={<Order />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="attendants" element={<Attendants />} />
+          </Route>
+          <Route path="Login" element={<Login />} />
+        </Routes>
+      </FirebaseProvider>
     </div>
   );
 }
@@ -161,77 +106,6 @@ function Layout() {
       </Sidebar>
 
       <Outlet />
-    </div>
-  );
-}
-
-function Home({ products }) {
-  return (
-    <div>
-      <ContainerHome>
-        <Header title="Home">
-          <div className="menu">Entradas</div>
-          <div className="menu">Bebidas</div>
-          <div className="menu">Pratos</div>
-        </Header>
-        <div className="body-list">
-          {products.map((product) => {
-            return (
-              <Card key={product.id}>
-                <div className="productImg">
-                  <img src={product.image} />
-                </div>
-                <h4>{product.name}</h4>
-                <span>{product.description}</span>
-                <h1>R$ {product.price}</h1>
-                <Button>Adicionar ao Pedido</Button>
-              </Card>
-            );
-          })}
-        </div>
-      </ContainerHome>
-      <Columm>
-        <ColumnOrders />
-      </Columm>
-    </div>
-  );
-}
-
-function Order({ commands }) {
-  return (
-    <div>
-      <ContainerHome>
-        <Header title="Pedido">
-          <span>Id Pedido: </span>
-          <span>Cliente: </span>
-          <span>Mesa: </span>
-        </Header>
-
-        <div className="Items-order_Menu">
-          <div style={{ width: "40%", textAlign: "center" }}>
-            <span>Produto</span>
-          </div>
-          <div>
-            <span>Preço</span>
-          </div>
-          <div style={{ width: "10%" }}>
-            <span>Quantidade</span>
-          </div>
-          <div>
-            <span>Subtotal</span>
-          </div>
-        </div>
-        <CardOrder>
-          {commands.map((comand) => {
-            return <OrderItem commands={comand} key={comand.id} />;
-          })}
-        </CardOrder>
-      </ContainerHome>
-      <Columm>
-        <CardExtra />
-
-        <CardExtra />
-      </Columm>
     </div>
   );
 }

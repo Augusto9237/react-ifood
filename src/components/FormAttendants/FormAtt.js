@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { ImCircleLeft, ImPlus } from "react-icons/im";
 import "./styles.css";
 
 import Button from "../Button/Button";
+import { FirebaseContext } from "../../Contexts/FirebaseContex";
 
-export default function FormAtt({
-  name,
-  setName,
-  email,
-  setEmail,
-  createUser
-}) {
+export default function FormAtt() {
+  const { createUser } = useContext(FirebaseContext);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createUser(name, email);
+  };
   return (
     <div className="form-body">
       <div className="Form-content">
@@ -36,7 +38,7 @@ export default function FormAtt({
         </div>
 
         <div className="form-group-buttons">
-          <Button onclick={createUser}>SALVAR</Button>
+          <Button onclick={handleSubmit}>SALVAR</Button>
           <button className="buttonCancel">CANCELAR</button>
         </div>
       </div>

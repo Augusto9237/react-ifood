@@ -1,18 +1,13 @@
+import React, { useContext, useState, useEffect } from "react";
 import FormAtt from "../../components/FormAttendants/FormAtt";
 import Columm from "../../components/UI/Columm/Columm";
 import ContainerHome from "../../components/UI/ContainerHome/ContainerHome";
 import Header from "../../components/UI/Header/Header";
+import { FirebaseContext } from "../../Contexts/FirebaseContex";
 import "./styles.css";
 
-const Attendants = ({
-  users,
-  name,
-  email,
-  setName,
-  setEmail,
-  deleteUser,
-  createUser
-}) => {
+const Attendants = () => {
+  const { users, deleteUser } = useContext(FirebaseContext);
   return (
     <>
       <ContainerHome>
@@ -48,13 +43,7 @@ const Attendants = ({
         </div>
       </ContainerHome>
       <Columm>
-        <FormAtt
-          name={name}
-          email={email}
-          createUser={createUser}
-          setName={setName}
-          setEmail={setEmail}
-        />
+        <FormAtt />
       </Columm>
     </>
   );
